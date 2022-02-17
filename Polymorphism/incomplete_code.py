@@ -1,3 +1,6 @@
+from zmq import RATE
+
+
 class Transportation(object):
    """Abstract base class"""
 
@@ -22,6 +25,17 @@ class Walk( Transportation ):
       return 0
 
 
+class Taxi( Transportation ):
+   RATE = 40
+
+   def __init__( self, start, end, distance):
+      self.start = start
+      self.end = end
+      self.distance = distance
+
+   def find_cost(self):
+      return self.distance * self.RATE
+      
    
 # main program
 
